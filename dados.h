@@ -34,7 +34,7 @@ typedef struct {
     char nome_disciplina[50];
     Professor *professor;
     Aluno **lista_alunos;
-    float *media_turma;
+    float media_turma;
 } Turma;
 
 // TODO: add interface create turma 
@@ -42,7 +42,7 @@ Turma *criarTurma (char *codigo,
                    char *nome_disciplina,
                    Professor *professor,
                    Aluno **lista_alunos,
-                   float *media_turma);
+                   float media_turma);
 
 
 // TODO: add interface create professor 

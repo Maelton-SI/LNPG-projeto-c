@@ -378,7 +378,7 @@ Turma *construir_turma(Professor **professores)
     fgets(media, 5, stdin);
     //scanf("%f", turma.media_turma);
     float media_numerica = strtof(media, NULL);
-    turma.media_turma = &media_numerica;
+    turma.media_turma = media_numerica;
 
     return criarTurma(turma.codigo, turma.nome_disciplina, turma.professor, turma.lista_alunos, turma.media_turma);
 }
