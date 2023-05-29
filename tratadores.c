@@ -210,7 +210,17 @@ void tratador_menu_turma(Turma **turmas, int *qtd_atual_turma, Professor **profe
     case 3:
     // TODO: implementar update of "turma"
     {
-        printf("Implementar a atualização de Turma\n");
+        int posicao = 0;
+        //int continuar = 1;
+        turma = buscar_turma(turmas, &posicao);
+        if (turma){
+            atualizacao_turma(turma, professores);
+            printf("Turma atualizada com sucesso!\n");
+            //continuar = 0;
+        }
+        else{
+            printf("Turma não encontrada!\n");
+        }
     }
 
     break;
@@ -452,4 +462,20 @@ void tratador_menu_estatistica(Professor **professores, int *qtd_atual_professor
     
         break;
     }
+}
+
+void atualizacao_turma(Turma *turma, Professor **professores){
+
+    int posicao = 0;
+
+    printf("Atualização de codigo\t> ");
+    fgets(turma->codigo, 9, stdin);
+    printf("Atualização  nome_disciplina\t> ");
+    fgets(turma->nome_disciplina, 49, stdin);
+    printf("Atualização de professor>\n ");
+    turma->professor = buscar_professor(professores, &posicao);
+    printf("Atualizacao da media\t> ");
+    
+    //NAO TIRE O & DA LINHA ABAIXO, DA MERDA FILHO!
+    scanf("%f", &turma->media_turma);
 }
