@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
             tratador_menu_turma(turmas, &qtd_atual_turma, professores, &qtd_atual_professor);
             break;
         case 4:
-            tratador_menu_estatistica(professores, &qtd_atual_professor);
+            tratador_menu_estatistica(turmas, professores, &qtd_atual_professor, &qtd_atual_turma);
             break;
         case 5:
             printf("Finalizando app...\n\n");
