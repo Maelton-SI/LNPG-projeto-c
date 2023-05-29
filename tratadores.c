@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "constantes.h"
 #include <string.h>
+#include <stdlib.h> // biblioteca para converter em float
 
 void tratador_menu_aluno(Aluno **alunos, int *qtd_atual_aluno)
 {
@@ -190,7 +191,7 @@ void tratador_menu_turma(Turma **turmas, int *qtd_atual_turma, Professor **profe
             // TODO: check this error
             turma = construir_turma(professores);
             turmas[i] = turma;
-            *qtd_atual_turma++;
+            (*qtd_atual_turma)++;
         }
         break;
     case 2:
@@ -372,8 +373,12 @@ Turma *construir_turma(Professor **professores)
     turma.professor = buscar_professor(professores, &posicao);
     //turma.lista_alunos = {NULL};
 
+    char media[5];
     printf("Média da turma\t> ");
-    scanf("%f", &turma.media_turma);
+    fgets(media, 5, stdin);
+    //scanf("%f", turma.media_turma);
+    float media_numerica = strtof(media, NULL);
+    turma.media_turma = &media_numerica;
 
     return criarTurma(turma.codigo, turma.nome_disciplina, turma.professor, turma.lista_alunos, turma.media_turma);
 }
@@ -445,23 +450,49 @@ void atualizacao_endereco(Aluno *aluno, Endereco *end){
 }
 
 // TODO: imprimir os professores, as matriculas dos professores que estão sem turma e a média de todas as turmas
-void tratador_menu_estatistica(Professor **professores, int *qtd_atual_professores){
+void tratador_menu_estatistica(Turma **turmas, Professor **professores, int *qtd_atual_professores, int *qtd_atual_turma){
     int opcao = menu_estatistica();
+    float media_turmas;
     switch (opcao)
     {
+
     // caso a opção seja 1 ele vai imprimir os nomes de todos os professores
     case 1:
         for (int i = 0; i < *qtd_atual_professores; i++){
             printf("Professor(a): %s", professores[i] -> cpf);
         }
         break;
+
     case 2:
-    
+        //imprimir professores que estão sem turma
+        printf("Professores sem turma:\n");
+        for (int a = 0; a < *qtd_atual_professores; a++){ //Percorre a lista de professores
+            for (int c = 0; c < *qtd_atual_turma; c++){   //percorre a lista de turmas
+                Professor *professor = turmas[c] -> professor; 
+
+                // Verifica se determinado professor está em determinada turma, caso não imprime sua matrícula
+                if ((strcmp(professor -> matricula, professores[a] -> matricula) != 0)){ 
+                    printf("[Matrícula: %s]", professores[a] -> matricula);
+                }
+
+            }
+        }
         break;
     case 3:
-    
+        // TODO: calcular média de todas as turmas
+        /*for (int c = 0; c < *qtd_atual_turma; c++){
+            float *ptr_media_turma = turmas[c] -> media_turma;
+            float media = *ptr_media_turma;
+            printf("%f\n", ptr_media_turma);
+            printf("%f\n", media);
+            media_turmas += media;
+            //printf("%.2f\n", media_turmas);
+        }
+        media_turmas = media_turmas/(*qtd_atual_turma);
+        printf("A média das turmas: %.2f\n", media_turmas);*/
         break;
     }
+
 }
 
 void atualizacao_turma(Turma *turma, Professor **professores){
