@@ -6,6 +6,7 @@
 
 int main(int argc, char const *argv[])
 {
+    
     int op_menu_principal = 0;
     
     Aluno *alunos[MAX_ALUNO] = {NULL};

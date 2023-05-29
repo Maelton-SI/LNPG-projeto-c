@@ -67,7 +67,7 @@ Turma *criarTurma(char *codigo,
                 char *nome_disciplina,
                 Professor *professor,
                 Aluno **lista_alunos,
-                float *media_turma)
+                float media_turma)
 {
     Turma *turma = (Turma *)malloc(sizeof(Turma));
     if (turma)

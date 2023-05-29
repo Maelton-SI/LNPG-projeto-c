@@ -1,8 +1,6 @@
 #include "menus.h"
 #include <stdio.h>
 
-
-
 int menu_principal()
 {
     int opcao = 0;
