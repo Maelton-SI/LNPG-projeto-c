@@ -27,7 +27,7 @@ void tratador_menu_aluno(Aluno **alunos, int *qtd_atual_aluno)
                     break;
                 }
             }
-            Aluno *aluno = construir_aluno();
+            aluno = construir_aluno();
             if (verificar_aluno_cadastrado(alunos, qtd_atual_aluno, aluno->matricula, aluno->cpf))
             {
                 printf("Aluno já está cadastrado\n");
@@ -35,7 +35,7 @@ void tratador_menu_aluno(Aluno **alunos, int *qtd_atual_aluno)
             else
             {
                 alunos[i] = aluno;
-                *qtd_atual_aluno++;
+                (*qtd_atual_aluno)++;
             }
         }
         break;
