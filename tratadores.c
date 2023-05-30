@@ -135,9 +135,17 @@ void tratador_menu_professor(Professor **professores, int *qtd_atual_professor)
     }
     break;
     case 3:
-    // TODO: implementar update of "professor"
     {
-        printf("Implementar a atualização de Professor\n");
+        int posicao = 0;
+        professor = buscar_professor(professores, &posicao);
+        if (professor){
+            atualizacao_professor(professor, professor->endereco);
+            printf("Atualizado com sucesso!\n");
+        }
+        // caso não seja encontrado imprime a informação para o usuário
+        else{
+            printf("Professor não encontrado!\n");
+        }
     }
 
     break;
@@ -422,7 +430,8 @@ void imprimir_turma(Turma *turma)
 }
 
 // função que atualiza os atributos de aluno
-void atualizacao_aluno(Aluno *aluno, Endereco *end){
+void atualizacao_aluno(Aluno *aluno, Endereco *end)
+{
     // pede as atualizações e muda o objeto 
     printf("Atualização de matrícula\t> ");
     fgets(aluno->matricula, 9, stdin);
@@ -434,8 +443,37 @@ void atualizacao_aluno(Aluno *aluno, Endereco *end){
     atualizacao_endereco(aluno, end);
 }
 
+void atualizacao_professor(Professor *professor, Endereco *end)
+{
+    // pede as atualizações e muda o objeto 
+    printf("Atualização de matrícula\t> ");
+    fgets(professor->matricula, 9, stdin);
+    printf("Atualização  de CPF\t> ");
+    fgets(professor->cpf, 11, stdin);
+    printf("Atualização  de Nome\t> ");
+    fgets(professor->nome, 49, stdin);
+    
+    atualizacao_endereco_professor(professor, end);
+}
+
 // função que atualiza o objeto endereço, recebe os ponteiros de aluno e endereço
-void atualizacao_endereco(Aluno *aluno, Endereco *end){
+void atualizacao_endereco(Aluno *aluno, Endereco *end)
+{
+    // pede ao usuário as atulizações, acessa cada atributo do endereço e o modifica
+    printf("Atualização de logradouro\t> ");
+    fgets(end->logradouro, 49, stdin);
+    printf("Atualização de bairro\t> ");
+    fgets(end->bairro, 49, stdin);
+    printf("Atualização de cidade\t> ");
+    fgets(end->cidade, 49, stdin);
+    printf("Atualização de estado\t> ");
+    fgets(end->estado, 9, stdin);
+    printf("Atualização de número\t> ");
+    fgets(end->numero, 9, stdin);
+}
+
+void atualizacao_endereco_professor(Professor *professor, Endereco *end)
+{
     // pede ao usuário as atulizações, acessa cada atributo do endereço e o modifica
     printf("Atualização de logradouro\t> ");
     fgets(end->logradouro, 49, stdin);
@@ -450,7 +488,8 @@ void atualizacao_endereco(Aluno *aluno, Endereco *end){
 }
 
 // TODO: imprimir os professores, as matriculas dos professores que estão sem turma e a média de todas as turmas
-void tratador_menu_estatistica(Turma **turmas, Professor **professores, int *qtd_atual_professores, int *qtd_atual_turma){
+void tratador_menu_estatistica(Turma **turmas, Professor **professores, int *qtd_atual_professores, int *qtd_atual_turma)
+{
     int opcao = menu_estatistica();
     float media_turmas;
     switch (opcao)
@@ -495,7 +534,8 @@ void tratador_menu_estatistica(Turma **turmas, Professor **professores, int *qtd
 
 }
 
-void atualizacao_turma(Turma *turma, Professor **professores){
+void atualizacao_turma(Turma *turma, Professor **professores)
+{
 
     int posicao = 0;
 

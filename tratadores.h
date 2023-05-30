@@ -29,6 +29,8 @@ Aluno *buscar_aluno(Aluno **alunos, int *posicao);
 //Funções de update
 void atualizacao_aluno(Aluno *aluno, Endereco *end);
 void atualizacao_endereco(Aluno *aluno, Endereco *end);
+void atualizacao_endereco_professor(Professor *professor, Endereco *end);
 void atualizacao_turma(Turma *tuma, Professor **professores);
+void atualizacao_professor(Professor *professor, Endereco *end);
 
 #endif
