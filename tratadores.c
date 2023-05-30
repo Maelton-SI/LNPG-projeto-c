@@ -36,7 +36,6 @@ void tratador_menu_aluno(Aluno **alunos, int *qtd_atual_aluno)
             {
                 alunos[i] = aluno;
                 (*qtd_atual_aluno)++;
-
                 salvarAluno(aluno);
             }
         }
@@ -675,3 +674,4 @@ void salvarTurma(Turma *turma)
         printf("ERRO: não foi possível abrir o arquivo.\n\n");
     }
 }
+
