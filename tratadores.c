@@ -27,7 +27,7 @@ void tratador_menu_aluno(Aluno **alunos, int *qtd_atual_aluno)
                     break;
                 }
             }
-            Aluno *aluno = construir_aluno();
+            aluno = construir_aluno();
             if (verificar_aluno_cadastrado(alunos, qtd_atual_aluno, aluno->matricula, aluno->cpf))
             {
                 printf("Aluno já está cadastrado\n");
@@ -35,7 +35,7 @@ void tratador_menu_aluno(Aluno **alunos, int *qtd_atual_aluno)
             else
             {
                 alunos[i] = aluno;
-                *qtd_atual_aluno++;
+                (*qtd_atual_aluno)++;
 
                 salvarAluno(aluno);
             }
@@ -99,7 +99,7 @@ void tratador_menu_aluno(Aluno **alunos, int *qtd_atual_aluno)
     }
 }
 
-// TODO: add tratador_menu_professor
+// feat: add tratador_menu_professor
 
 void tratador_menu_professor(Professor **professores, int *qtd_atual_professor)
 {
@@ -136,6 +136,7 @@ void tratador_menu_professor(Professor **professores, int *qtd_atual_professor)
             {
                 professores[i] = professor;
                 (*qtd_atual_professor)++;
+                salvarProfessor(professor);
             }
         }
         break;
@@ -217,7 +218,7 @@ void tratador_menu_turma(Turma **turmas, int *qtd_atual_turma, Professor **profe
                     break;
                 }
             }
-            // TODO: check this error
+
             turma = construir_turma(professores);
 
             if (verificar_turma_cadastrada(turmas, qtd_atual_turma, turma->codigo))
@@ -228,6 +229,7 @@ void tratador_menu_turma(Turma **turmas, int *qtd_atual_turma, Professor **profe
             {
                 turmas[i] = turma;
                 (*qtd_atual_turma)++;
+                salvarTurma(turma);
             }
         }
         break;
@@ -246,7 +248,7 @@ void tratador_menu_turma(Turma **turmas, int *qtd_atual_turma, Professor **profe
     }
     break;
     case 3:
-        // TODO: implementar update of "turma"
+        // feat: implementar update of "turma"
         {
             int posicao = 0;
             // int continuar = 1;
@@ -356,7 +358,7 @@ void imprimir_endereco(Endereco *endereco)
     printf("Estado: %s", endereco->estado);
 }
 
-// TODO: add tratadores professor
+// feat: add tratadores professor
 Professor *construir_professor()
 {
     Professor professor;
@@ -398,7 +400,7 @@ void imprimir_professor(Professor *professor)
     imprimir_endereco(professor->endereco);
 }
 
-// TODO: add tratadores turma
+// feat: add tratadores turma
 Turma *construir_turma(Professor **professores)
 {
     // Aluno **alunos[MAX_ALUNO] = {NULL};
@@ -518,7 +520,7 @@ void atualizacao_endereco_professor(Professor *professor, Endereco *end)
     fgets(end->numero, 9, stdin);
 }
 
-// TODO: imprimir os professores, as matriculas dos professores que estão sem turma e a média de todas as turmas
+// feat: imprimir os professores, as matriculas dos professores que estão sem turma e a média de todas as turmas
 void tratador_menu_estatistica(Turma **turmas, Professor **professores, int *qtd_atual_professores, int *qtd_atual_turma)
 {
     int opcao = menu_estatistica();
@@ -636,6 +638,36 @@ void salvarAluno(Aluno *aluno)
     if (arq)
     {
         fwrite(aluno, sizeof(Aluno), 1, arq);
+        fclose(arq);
+    }
+    else
+    {
+        printf("ERRO: não foi possível abrir o arquivo.\n\n");
+    }
+}
+
+void salvarProfessor(Professor *professor)
+{
+    FILE *arq = fopen("professores.txt", "ab");
+
+    if (arq)
+    {
+        fwrite(professor, sizeof(Professor), 1, arq);
+        fclose(arq);
+    }
+    else
+    {
+        printf("ERRO: não foi possível abrir o arquivo.\n\n");
+    }
+}
+
+void salvarTurma(Turma *turma)
+{
+    FILE *arq = fopen("turmas.txt", "ab");
+
+    if (arq)
+    {
+        fwrite(turma, sizeof(Turma), 1, arq);
         fclose(arq);
     }
     else

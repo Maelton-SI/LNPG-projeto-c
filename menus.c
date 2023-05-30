@@ -8,7 +8,7 @@ int menu_principal()
     {
         printf("== Menu principal==\n\n");
         printf("1 - Menu aluno\n");
-        // TODO: add menu professor and turma
+        // feat: add menu professor and turma
         printf("2 - Menu Professor\n");
         printf("3 - Menu Turma\n");
         printf("4 - Estatísticas\n");
@@ -47,7 +47,7 @@ int menu_crud_aluno()
 
     } while (1);
 }
-// TODO: add crud professor menu
+// feat: add crud professor menu
 int menu_crud_professor()
 {
     int opcao = 0;
@@ -70,7 +70,7 @@ int menu_crud_professor()
 
     } while (1);
 }
-// TODO: add crud turma menu
+// feat: add crud turma menu
 int menu_crud_turma()
 {
     int opcao = 0;

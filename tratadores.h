@@ -40,4 +40,6 @@ int verificar_turma_cadastrada(Turma **turmas, int *qtd_atual_turma, char *codig
 
 // Funcoes para salvar dados
 void salvarAluno(Aluno *aluno);
+void salvarProfessor(Professor *professor);
+void salvarTurma(Turma *turma);
 #endif
