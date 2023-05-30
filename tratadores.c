@@ -36,6 +36,19 @@ void tratador_menu_aluno(Aluno **alunos, int *qtd_atual_aluno)
             {
                 alunos[i] = aluno;
                 *qtd_atual_aluno++;
+
+                FILE *arq = fopen("alunos.txt", "wb");
+                if (arq)
+                {
+
+                    fwrite(aluno, sizeof(Aluno), 1, arq);
+
+                    fclose(arq);
+                }
+                else
+                {
+                    printf("ERRO: nao foi possivel abrir o arquivo.\n\n");
+                }
             }
         }
         break;

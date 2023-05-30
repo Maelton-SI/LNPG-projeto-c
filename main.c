@@ -4,18 +4,38 @@
 #include <stdio.h>
 #include "constantes.h"
 
+int op_menu_principal = 0;
+
+Aluno *alunos[MAX_ALUNO] = {NULL};
+Professor *professores[MAX_PROFESSOR] = {NULL};
+Turma *turmas[MAX_TURMAS] = {NULL};
+
+int qtd_atual_aluno = 0;
+int qtd_atual_professor = 0;
+int qtd_atual_turma = 0;
+
 int main(int argc, char const *argv[])
 {
-    
-    int op_menu_principal = 0;
-    
-    Aluno *alunos[MAX_ALUNO] = {NULL};
-    Professor *professores[MAX_PROFESSOR] = {NULL};
-    Turma *turmas[MAX_TURMAS] = {NULL};
 
-    int qtd_atual_aluno = 0;
-    int qtd_atual_professor = 0;
-    int qtd_atual_turma = 0;
+    FILE *arquivo = fopen("alunos.txt", "rb");
+    if (arquivo)
+    {
+        Aluno aluno;
+        while (fread(&aluno, sizeof(Aluno), 1, arquivo) == 1)
+        {
+            // Faça algo com os dados lidos do arquivo
+            // Por exemplo, exiba os valores na tela
+            printf("Matrícula: %s\n", aluno.matricula);
+            printf("CPF: %s\n", aluno.cpf);
+            printf("Nome: %s\n", aluno.nome);
+            printf("\n");
+        }
+        fclose(arquivo);
+    }
+    else
+    {
+        printf("ERRO: não foi possível abrir o arquivo.\n\n");
+    }
 
     do
     {
@@ -24,6 +44,7 @@ int main(int argc, char const *argv[])
         {
         case 1:
             tratador_menu_aluno(alunos, &qtd_atual_aluno);
+
             break;
         // TODO: add menus professor and turma
         case 2:
