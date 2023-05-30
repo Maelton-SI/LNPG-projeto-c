@@ -3,6 +3,10 @@
 #include "dados.h"
 #include <stdio.h>
 #include "constantes.h"
+#include "salvar_dados_aluno.h"
+#include "salvar_dados_professores.h"
+#include "salvar_dados_turma.h"
+#include "ler_dados.h"
 
 int main(int argc, char const *argv[])
 {
@@ -35,7 +39,11 @@ int main(int argc, char const *argv[])
             tratador_menu_estatistica(turmas, professores, &qtd_atual_professor, &qtd_atual_turma);
             break;
         case 5:
+            salvar_dados_aluno(alunos, &qtd_atual_aluno);
+            salvar_dados_professor(professores, &qtd_atual_professor);
+            salvar_dados_turma(turmas, &qtd_atual_turma);
             printf("Finalizando app...\n\n");
+            break;
         }
     } while (op_menu_principal != 5);
     return 0;
