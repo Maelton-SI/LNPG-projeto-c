@@ -25,10 +25,10 @@ int main(int argc, char const *argv[])
         {
             // Faça algo com os dados lidos do arquivo
             // Por exemplo, exiba os valores na tela
-            printf("Matrícula: %s\n", aluno.matricula);
-            printf("CPF: %s\n", aluno.cpf);
-            printf("Nome: %s\n", aluno.nome);
-            printf("\n");
+            printf("Matrícula: %s", aluno.matricula);
+            printf("CPF: %s", aluno.cpf);
+            printf("Nome: %s", aluno.nome);
+            printf("Endereço: %s", aluno.endereco);
         }
         fclose(arquivo);
     }
