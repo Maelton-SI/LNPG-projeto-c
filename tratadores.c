@@ -518,17 +518,14 @@ void tratador_menu_estatistica(Turma **turmas, Professor **professores, int *qtd
         }
         break;
     case 3:
-        // TODO: calcular média de todas as turmas
-        /*for (int c = 0; c < *qtd_atual_turma; c++){
-            float *ptr_media_turma = turmas[c] -> media_turma;
-            float media = *ptr_media_turma;
-            printf("%f\n", ptr_media_turma);
-            printf("%f\n", media);
+        // calcular média de todas as turmas
+        for (int c = 0; c < *qtd_atual_turma; c++){ // percorre a lista de turmas
+            float media = turmas[c] -> media_turma; // pega as medias de cada turma
             media_turmas += media;
-            //printf("%.2f\n", media_turmas);
         }
-        media_turmas = media_turmas/(*qtd_atual_turma);
-        printf("A média das turmas: %.2f\n", media_turmas);*/
+        // divide a soma das medias pela quantidade de turmas
+        media_turmas = media_turmas/(*qtd_atual_turma); 
+        printf("A média das turmas: %.2f\n", media_turmas); 
         break;
     }
 
