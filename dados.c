@@ -45,7 +45,7 @@ Endereco *criarEndereco(char *logradouro,
     return endereco;
 }
 
-// TODO: add create professor function
+// feat: add create professor function
 Professor *criarProfessor(char *matricula, char *nome, char *cpf, Endereco *endereco)
 {
     Professor *professor = (Professor *)malloc(sizeof(Professor));
@@ -62,7 +62,7 @@ Professor *criarProfessor(char *matricula, char *nome, char *cpf, Endereco *ende
     }
     return professor;
 }
-// TODO: add create turma function
+// feat: add create turma function
 Turma *criarTurma(char *codigo,
                 char *nome_disciplina,
                 Professor *professor,
@@ -102,13 +102,13 @@ void destruirEndereco(Endereco *endereco)
         free(endereco);
 }
 
-// TODO: add delete professor function
+// feat: add delete professor function
 void destruirProfessor(Professor *professor)
 {
     if (professor)
         free(professor);
 }
-// TODO: add delete turma function
+// feat: add delete turma function
 void destruirTurma(Turma *turma)
 {
     if (turma)

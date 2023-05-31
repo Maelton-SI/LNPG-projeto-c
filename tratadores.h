@@ -38,4 +38,8 @@ int verificar_aluno_cadastrado(Aluno **alunos, int *qtd_atual_aluno, char *matri
 int verificar_professor_cadastrado(Professor **professores, int *qtd_atual_professor, char *matricula, char *cpf);
 int verificar_turma_cadastrada(Turma **turmas, int *qtd_atual_turma, char *codigo);
 
+// Funcoes para salvar dados
+void salvarAluno(Aluno *aluno);
+void salvarProfessor(Professor *professor);
+void salvarTurma(Turma *turma);
 #endif

@@ -18,7 +18,7 @@ typedef struct
     Endereco *endereco;
 } Aluno;
 
-// TODO: add professor model
+// feat: add professor model
 
 typedef struct {
     char matricula[10];
@@ -28,7 +28,7 @@ typedef struct {
 } Professor;
 
 
-// TODO: add turma model
+// feat: add turma model
 typedef struct {
     char codigo[10];
     char nome_disciplina[50];
@@ -37,7 +37,7 @@ typedef struct {
     float media_turma;
 } Turma;
 
-// TODO: add interface create turma 
+// feat: add interface create turma 
 Turma *criarTurma (char *codigo,
                    char *nome_disciplina,
                    Professor *professor,
@@ -45,7 +45,7 @@ Turma *criarTurma (char *codigo,
                    float media_turma);
 
 
-// TODO: add interface create professor 
+// feat: add interface create professor 
 
 Professor *criarProfessor(char *matricula,
                         char *nome,
